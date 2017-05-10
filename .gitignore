@@ -23,3 +23,5 @@ CMakeCache.txt
 *.log
 *.tlog
 build
+build_android
+android_lib

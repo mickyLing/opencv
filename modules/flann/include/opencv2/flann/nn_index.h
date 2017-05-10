@@ -80,9 +80,9 @@ public:
             findNeighbors(resultSet, queries[i], params);
         }
 #else
-        KNNUniqueResultSet<DistanceType> resultSet(knn);
+#       pragma omp parallel for num_threads(8)
         for (size_t i = 0; i < queries.rows; i++) {
-            resultSet.clear();
+            KNNUniqueResultSet<DistanceType> resultSet(knn);
             findNeighbors(resultSet, queries[i], params);
             if (get_param(params,"sorted",true)) resultSet.sortAndCopy(indices[i], dists[i], knn);
             else resultSet.copy(indices[i], dists[i], knn);

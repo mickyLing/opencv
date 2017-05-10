@@ -133,7 +133,7 @@ if(";${CPU_BASELINE};" MATCHES ";NATIVE;" OR ";${CPU_BASELINE};" MATCHES ";HOST;
   set(CPU_BASELINE_DETECT ON)
   set(_add_native_flag ON)
 elseif(";${CPU_BASELINE};" MATCHES ";DETECT;")
-  set(CPU_BASELINE_DETECT ON)
+  #set(CPU_BASELINE_DETECT ON)
 elseif(" ${CMAKE_CXX_FLAGS} " MATCHES " -march=native | -xHost | /QxHost ")
   if(DEFINED CPU_BASELINE)
     message(STATUS "CPU: Detected '-march=native' or '-xHost' compiler flag. Force CPU_BASELINE=DETECT.")

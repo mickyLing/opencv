@@ -1427,6 +1427,12 @@ if( ANDROID_COMPILER_IS_CLANG )
  endif()
 endif()
 
+set( ANDROID_USE_OPENMP "TRUE" )
+if( ANDROID_USE_OPENMP )
+ set( ANDROID_CXX_FLAGS "${ANDROID_CXX_FLAGS} -fopenmp" )
+ set( ANDROID_LINKER_FLAGS "${ANDROID_LINKER_FLAGS} -fopenmp" )
+endif()
+
 # cache flags
 set( CMAKE_CXX_FLAGS           ""                        CACHE STRING "c++ flags" )
 set( CMAKE_C_FLAGS             ""                        CACHE STRING "c flags" )

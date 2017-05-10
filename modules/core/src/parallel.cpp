@@ -322,6 +322,14 @@ void cv::parallel_for_(const cv::Range& range, const cv::ParallelLoopBody& body,
 
 #ifdef CV_PARALLEL_FRAMEWORK
 
+#if defined HAVE_OPENM
+    char *pVal = getenv("OMP_NUM_THREADS");
+    if (pVal)
+    {
+    	numThreads = atoi(pVal);
+    	omp_set_num_threads(numThreads);
+    }
+#endif
     if(numThreads != 0)
     {
         ProxyLoopBody pbody(body, range, nstripes);
